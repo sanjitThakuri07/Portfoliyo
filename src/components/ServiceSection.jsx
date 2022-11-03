@@ -1,4 +1,6 @@
 import React from "react";
+import { About, Description, Image } from "../styled/styles.styled";
+import styled from "styled-components";
 
 const rawData = [
   {
@@ -27,31 +29,63 @@ const rawData = [
   },
 ];
 
+const Services = styled(About)`
+  h2 {
+    padding-bottom: 5rem;
+  }
+  p {
+    width: 70%;
+    padding: 2rem 0rem 4rem 0rem;
+  }
+`;
+
+const Cards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  @media (max-width: 1300px) {
+    justify-content: center;
+  }
+`;
+
+const Card = styled.div`
+  flex-basis: 20rem;
+  .icon {
+    display: flex;
+    align-items: center;
+    h3 {
+      margin-left: 1rem;
+      background: white;
+      color: black;
+      padding: 1rem;
+    }
+  }
+`;
+
 const ServiceSection = () => {
   return (
-    <div>
-      <div className="services">
-        <div className="description">
+    <>
+      <Services>
+        <Description>
           <h2>
             High <span>quality</span> services
           </h2>
-          <div className="cards">
+          <Cards>
             {rawData?.map((item) => (
-              <div className="card" key={item?.id}>
+              <Card key={item?.id}>
                 <div className="icon">
                   <img src={item.img} alt="" />
                   <h3>{item.title}</h3>
                 </div>
                 <p>{item.desc}</p>
-              </div>
+              </Card>
             ))}
-          </div>
-        </div>
-        <div className="image">
+          </Cards>
+        </Description>
+        <Image>
           <img src={require("../img/home2.png")} alt="" />
-        </div>
-      </div>
-    </div>
+        </Image>
+      </Services>
+    </>
   );
 };
 
