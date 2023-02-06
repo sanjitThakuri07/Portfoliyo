@@ -1,23 +1,31 @@
 import React from "react";
 import { About, Description, Image, Hide } from "../styled/styles.styled";
+// framer motion
+import { motion } from "framer-motion";
+import { titleAnim, fade, photoAnim, containerAnimation } from "../animation";
 
 const AboutSection = () => {
   return (
     <About>
       <Description>
-        <div className="title">
+        <motion.div
+          variants={containerAnimation}
+          initial="hidden"
+          animate="show"
+          className="title"
+        >
           <Hide>
-            <h2>We work to make</h2>
+            <motion.h2 variants={titleAnim}>We work to make</motion.h2>
           </Hide>
           <Hide>
-            <h2>
+            <motion.h2 variants={titleAnim}>
               Your <span>dreams</span> come
-            </h2>
+            </motion.h2>
           </Hide>
           <Hide>
-            <h2>true.</h2>
+            <motion.h2 variants={titleAnim}>true.</motion.h2>
           </Hide>
-        </div>
+        </motion.div>
         <p>
           Contact for making your dream idea true through the help of software.
         </p>
