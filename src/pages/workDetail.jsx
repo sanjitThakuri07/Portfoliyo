@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { MovieState } from "../movieState";
+// animation
+import { motion } from "framer-motion";
+import { pageAnimation } from "../animation";
 
 //Award Component
 const Award = ({ title, description }) => {
@@ -30,7 +33,12 @@ const WorkDetail = () => {
   return (
     <>
       {dataState && (
-        <Details>
+        <Details
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <HeadLine>
             <h2>{dataState.title}</h2>
             <img src={dataState.mainImg} alt="dataState" />
@@ -53,7 +61,7 @@ const WorkDetail = () => {
   );
 };
 
-const Details = styled.div`
+const Details = styled(motion.div)`
   color: white;
 `;
 const HeadLine = styled.div`
